@@ -1,0 +1,175 @@
+<div class="card">
+    <!--    <div class="card-header"> liste <small><code>des</code> contacts</small>
+            <button class="btn btn-primary pull-right" type="button" routerLink="/contacts/contactAdd"><i class="fa fa-lightbulb-o"></i>&nbsp;Ajouter Un Contact</button>
+        </div>-->
+    <div class="card-body">
+        <div class="animated fadeIn">
+
+            <!--/.row-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa fa-align-justify"></i> liste des panel 
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Nom</p>
+                                    <ng-select [items]="data"
+                                        bindLabel="nom"
+                                        bindValue="nom"
+                                        [multiple]="true"
+                                        placeholder="Select nom"
+                                        [(ngModel)]="selectedNomIds"
+                                        [ngModelOptions]="{standalone: true}"
+                                        (change)="OnChnage($event)" >
+                                </ng-select>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Prenom</p>
+                                <ng-select [items]="data"
+                                    bindLabel="prenom"
+                                    bindValue="prenom"
+                                    [multiple]="true"
+                                    placeholder="Select prenom"
+                                    [(ngModel)]="selectedPrenomIds"
+                                    (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Marque</p>
+                                <ng-select [items]="data"
+                                    bindLabel="marque"
+                                    bindValue="marque"
+                                    [multiple]="true"
+                                    placeholder="Select marque"
+                                    [(ngModel)]="selectedMarqueIds"
+                                    (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>Application</p>
+                                <ng-select [items]="data"
+                                    bindLabel="application"
+                                    bindValue="application"
+                                    [multiple]="true"
+
+                                    placeholder="Select application"
+                                    [(ngModel)]="selectedAppIds"
+                                     (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Solution</p>
+                                <ng-select [items]="data"
+                                    bindLabel="solution"
+                                    bindValue="solution"
+                                    [multiple]="true"
+                                    placeholder="Select solution"
+                                    [(ngModel)]="selectedSolIds"
+                                     (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Corps</p>
+                                <ng-select [items]="data"
+                                    bindLabel="corpeOne"
+                                    bindValue="corpeOne"
+                                    [multiple]="true"
+                                    placeholder="Select corpe"
+                                    [(ngModel)]="selectedCorpsIds"
+                                     (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>Departement</p>
+                                <ng-select [items]="data"
+                                    bindLabel="departement"
+                                    bindValue="departement"
+                                    [multiple]="true"
+                                    placeholder="Select departement"
+                                    [(ngModel)]="selectedDepIds"
+                                     (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Distributeurs</p>
+                                <ng-select [items]="data"
+                                    bindLabel="distributeur"
+                                    bindValue="distributeur"
+                                    [multiple]="true"
+                                    placeholder="Select distributeur"
+                                    [(ngModel)]="selectedDisIds"
+                                     (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+                            <div class="col-md-4">
+                                <p>Taille</p>
+                                <ng-select [items]="data"
+                                    bindLabel="taille"
+                                    bindValue="taille"
+                                    [multiple]="true"
+                                    placeholder="Select taille"
+                                    [(ngModel)]="selectedTailIds"
+                                     (change)="OnChnage($event)">
+                                </ng-select>
+                            </div>
+
+                        </div>
+                        <hr>
+
+                        <div class="col-xs-12 ">
+                            <h3>Segment :</h3> 
+                           {{ current}}
+                            <input type="text"
+                                   class="form-control"
+                                   name="nom"
+                                   [(ngModel)]="selection"
+                                   required 
+                                   value="{{selectedNomIds}}{{selectedPrenomIds}}{{selectedMarqueIds}}{{selectedDepIds}} {{selectedDisIds}} {{selectedTailIds}} {{selectedCorpsIds}}{{selectedSolIds}}{{selectedAppIds}}">
+
+
+                        </div>
+                       
+
+
+
+
+
+
+                    </div>
+                         <div class="card-footer">
+                            <button class="btn btn-sm btn-primary" type="submit" (click)="NewSegment()"><i class="fa fa-dot-circle-o"></i>  Ajout à la sélection</button>
+                            <button class="btn btn-sm btn-danger" type="reset"><i class="fa fa-ban"></i>  Réinitialiser le segment</button>
+                        </div>
+                        <h1>Customer List</h1>
+<ul >
+  <li *ngFor="let customer of segments" >
+    {{ customer.nom }}
+  </li>
+</ul>
+                        <input type="text"
+                                                   class="form-control"
+                                                   name="name"
+                                                 
+                                                   required>
+                         <button class="btn btn-sm btn-primary" type="submit" (click)="AddSegment(segment)"><i class="fa fa-dot-circle-o"></i>  Ajout Segment</button>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+        <!--/.row-->
+    </div>
+
+</div>
+</div>
