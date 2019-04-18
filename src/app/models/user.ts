@@ -7,7 +7,7 @@ export class User {
     email: string;
     password: string;
     profession: string;
-    photo: string|any;
+    photo: File;
    
     
    

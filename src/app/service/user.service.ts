@@ -54,17 +54,16 @@ export class UserService {
     }
     addNewUser(formModel) {
         console.log(formModel);
-        
         const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
         return this.http.post(this.uri + 'users/addnew', formModel, {
-        headers: headers,
-        
+            headers: headers,
+
         }).map(res => res.json()).catch(this.handelError);
 
     }
-    
-   
+
+
 
 
     getUsers(): Observable<any[]> {
@@ -98,18 +97,18 @@ export class UserService {
     //    headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
     //    return this.http.delete(this.uri + '/' + id, {headers : headers}).map(res => res.json());
     //  }
-    
-    
-    
-    // addMedia(selectedFile) {
-    //     alert(selectedFile);
-        
-    //     const headers = new Headers();
-    //     headers.append('Authorization', 'Bearer ' + this.token);
-    //     return this.http.post(this.uri + 'users/addmedia', this.selectedFile, {headers: headers}).map(res => res.json()).catch(this.handelError);
 
 
-    // }
+
+    addMedia(selectedFile) {
+        console.log(selectedFile);
+
+        const headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + this.token);
+        return this.http.post(this.uri + 'users/addmedia', selectedFile, {headers: headers}).map(res => res.json()).catch(this.handelError);
+
+
+    }
 
     private handelError(error: Response) {
 

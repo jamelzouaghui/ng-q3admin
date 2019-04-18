@@ -44,18 +44,20 @@ export class AddUserComponent implements OnInit {
 
 
     onSelectedFile(event) {
+        console.log(event);
+        
         let reader = new FileReader();
         if (event.target.files && event.target.files.length > 0) {
+            
             let file = event.target.files[0];
+            console.log(file);
             reader.readAsDataURL(file);
             reader.onload = () => {
-                this.userForm.get('photo').setValue({
-                    filename: file.name,
-                    filetype: file.type,
-                    value: reader.result.split(',')[1]
-                })
+                this.userForm.get('photo').setValue(file);
             };
         }
+//
+//
 
 
 

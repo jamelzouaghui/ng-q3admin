@@ -1,4 +1,19 @@
 
-<img [src]="url" height="200"> <br/>
-<input type='file' (change)="onSelectFile($event)">
-<button type="button" (click)="onUpload()">Enregistrer</button>
+    <img [src]="url" height="200"> <br/>
+
+
+
+
+    <div class="form-group">
+        <label for="file">Choose File</label>
+        <input type="file"
+               id="file"
+               (change)="onSelectFile($event.target.files)">
+    </div>
+
+
+    <button type="button" (click)="onUpload()">Enregistrer</button>
+
+
+
+
