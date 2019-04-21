@@ -17,7 +17,7 @@ import {User} from './../../../models/user';
 export class AddUserComponent implements OnInit {
     userForm: FormGroup;
 
-    selectedFile: File
+   fileToUpload: File = null;
 
     @ViewChild('fileInput') fileInput: ElementRef;
     errors = [];
@@ -42,31 +42,20 @@ export class AddUserComponent implements OnInit {
 
     }
 
-
-    onSelectedFile(event) {
-        console.log(event);
-        
-        let reader = new FileReader();
-        if (event.target.files && event.target.files.length > 0) {
-            
-            let file = event.target.files[0];
-            console.log(file);
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-                this.userForm.get('photo').setValue(file);
-            };
-        }
-//
-//
-
-
-
-
+  onSelectFile(files: FileList) {
+        this.fileToUpload = <File>files.item(0);
+        console.log(this.fileToUpload);
     }
 
     registerUser() {
+         const fd = new FormData();
          const formModel = this.userForm.value;
-        this._userService.addNewUser(formModel).subscribe((result => {
+        
+        fd.append('image',this.fileToUpload,this.fileToUpload.name)
+        fd.append('formModel',formModel)
+        
+        console.log(fd);
+        this._userService.addNewUser(fd).subscribe((result => {
             this.router.navigate(['/users/users']);
 
         }), addError => this.errors = addError);

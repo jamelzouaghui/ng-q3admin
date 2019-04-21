@@ -20,7 +20,7 @@
 
                             <form [formGroup]="userForm" (ngSubmit)="registerUser()">
 
-                                  <fieldset >
+                                <fieldset >
                                     <div class="form-group">
                                         <label>Nom</label>
                                         <input type="text"
@@ -43,7 +43,7 @@
                                         <input type="text"
                                                class="form-control"
                                                name="username"
-                                                formControlName="username"
+                                               formControlName="username"
                                                required>
                                     </div>
                                     <div class="form-group">
@@ -58,12 +58,12 @@
 
 
                                     <div class="form-group">
-                                         <label>Email</label>
+                                        <label>Email</label>
                                         <input type="email"
                                                class="form-control"
                                                name="email"
                                                formControlName="email"
-                                             
+
                                                required />
 
 
@@ -75,15 +75,16 @@
                                         <input type="password"
                                                class="form-control"
                                                name="password"
-                                                formControlName="password"
+                                               formControlName="password"
                                                required
                                                minlength="8">
                                     </div>
-                                   <div class="form-group">
+                                    <div class="form-group">
                                         <label>photo</label>
-                                        <input type="file" name="photo" id="photo" (change)="onSelectedFile($event)" #fileInput>
-                                         
-                                 
+                                        <input type="file"
+                                               id="file"
+                                               name="photo"
+                                               (change)="onSelectFile($event.target.files)">
                                     </div>
 
 

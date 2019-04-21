@@ -52,11 +52,11 @@ export class UserService {
 
 
     }
-    addNewUser(formModel) {
-        console.log(formModel);
+    addNewUser(fd) {
+        console.log(fd);
         const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
-        return this.http.post(this.uri + 'users/addnew', formModel, {
+        return this.http.post(this.uri + 'users/addnew', fd, {
             headers: headers,
 
         }).map(res => res.json()).catch(this.handelError);
