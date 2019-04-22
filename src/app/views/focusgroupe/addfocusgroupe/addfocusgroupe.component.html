@@ -1,7 +1,7 @@
 <div class="card">
-<!--    <div class="card-header"> liste <small><code>des</code> Focus Groupe</small>
-        <button class="btn btn-primary pull-right" type="button" routerLink="/focusgroupeS/focusgroupeAdd"><i class="fa fa-lightbulb-o"></i>&nbsp;Ajouter Focus Groupe</button>
-    </div>-->
+    <!--    <div class="card-header"> liste <small><code>des</code> Focus Groupe</small>
+            <button class="btn btn-primary pull-right" type="button" routerLink="/focusgroupeS/focusgroupeAdd"><i class="fa fa-lightbulb-o"></i>&nbsp;Ajouter Focus Groupe</button>
+        </div>-->
     <div class="card-body">
         <div class="animated fadeIn">
 
@@ -14,107 +14,131 @@
                         </div>
                         <div class="card-body">
                             <form [formGroup]="profileForm" (ngSubmit)="onSubmit()"  class="well">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <label>Nom de groupe</label>
 
-                                 
+                                        <input type="text"
+                                               class="form-control"
+                                               formControlName="nom"
+
+                                               required>
+                                    </div>
+                                    <div class="col-md-5 pull-right"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Raison: Donnez une bonne raison à vos invités de rejoindre le groupe (en 1 phrase)</label>
+                                        <textarea rows="5"
+                                                  class="form-control"
+                                                  formControlName="raison"
+
+                                                  required>
+                                        </textarea>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row"> 
+
+                                    <div class="col-md-6">
+
+
+                                        <label>photo de couverture</label>
+                                        <input type="file"
+                                               id="file"
+                                               class="form-control"
+                                               name="photoCouverture"
+                                               (change)="onSelectFileCouverture($event.target.files)">
+
+                                    </div>
+
+                                    <div class="col-md-6 pull-right">
+                                        <label>photo de groupe</label>
+                                        <input type="file"
+                                               id="file"
+                                               class="form-control"
+                                               name="photoGroupe"
+                                               (change)="onSelectFileGroupe($event.target.files)">
+                                    </div>
+                                </div>
+                                <br><br>
+                                <hr>
+                                <br><br>
+                                <div formGroupName="animateur"  >
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <label>Nom de groupe</label>
-
+                                            <label>Nom Animateur</label>
                                             <input type="text"
                                                    class="form-control"
-                                                   formControlName="nom"
-                                                 
-                                                   required>
-                                        </div>
-                                        <div class="col-md-5 pull-right"></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label>Raison: Donnez une bonne raison à vos invités de rejoindre le groupe (en 1 phrase)</label>
-                                            <textarea rows="5"
-                                                      class="form-control"
-                                                      formControlName="raison"
-                                                      
-                                                      required>
-                                            </textarea>
+                                                   formControlName="firstname"
 
-                                        </div>
-
-                                    </div>
-                                    <div formGroupName="animateur"  >
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <label>Nom Animateur</label>
-                                                <input type="text"
-                                                       class="form-control"
-                                                       formControlName="firstname"
-                                                       
-                                                       required>
-
-                                            </div>
-                                            <div class="col-md-5 pull-right">
-                                                <label>Prenom Animateur</label>
-                                                <input type="text"
-                                                       class="form-control"
-                                                       formControlName="lastname"
-                                                      
-                                                       required>
-
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <label>Profession Animateur</label>
-                                                <input type="text"
-                                                       class="form-control"
-                                                       formControlName="profession"
-                                                       
-                                                       required>
-
-                                            </div>
-                                            <!--                                        <div class="col-md-5 pull-right">
-                                                                                        <label>Photo Animateur</label>
-                                                                                        <input type="text"
-                                                                                               class="form-control"
-                                                                                               name="raison"
-                                                                                               [(ngModel)]="focusgroupe.raison"
-                                                                                               required>
-                                            
-                                                                                    </div>-->
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-5">
-
-                                            <label>description 1</label>
-                                            <input type="text"
-                                                   class="form-control"
-                                                   formControlName="description1"
-                                                 
                                                    required>
 
                                         </div>
-
-
                                         <div class="col-md-5 pull-right">
-                                            <label>description 2</label>
+                                            <label>Prenom Animateur</label>
                                             <input type="text"
                                                    class="form-control"
-                                                   formControlName="description2"
-                                                   
+                                                   formControlName="lastname"
+
                                                    required>
+
                                         </div>
                                     </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label>Profession Animateur</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   formControlName="profession"
+
+                                                   required>
+
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label>photo Animateur</label>
+                                            <input type="file"
+                                                   id="file"
+                                                   class="form-control"
+                                                   name="photoAnimateur"
+                                                   (change)="onSelectFileAnimateur($event.target.files)">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                        <label>description 1</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               formControlName="description1"
+
+                                               required>
+
+                                    </div>
+
+
+                                    <div class="col-md-5 pull-right">
+                                        <label>description 2</label>
+                                        <input type="text"
+                                               class="form-control"
+                                               formControlName="description2"
+
+                                               required>
+                                    </div>
+                                </div>
 
 
                                 <button type="submit"
                                         class="btn btn-primary">Enregister
                                 </button>
-                           
+
 
                             </form>
 

@@ -34,6 +34,7 @@ export class AddUserComponent implements OnInit {
             profession: [''],
             email: [''],
             password: [''],
+            mobilePhone: [''],
             photo: null
         });
     }
@@ -44,17 +45,17 @@ export class AddUserComponent implements OnInit {
 
   onSelectFile(files: FileList) {
         this.fileToUpload = <File>files.item(0);
-        console.log(this.fileToUpload);
+        
+        
     }
 
     registerUser() {
          const fd = new FormData();
          const formModel = this.userForm.value;
-        
+        console.log(formModel);
         fd.append('image',this.fileToUpload,this.fileToUpload.name)
-        fd.append('formModel',formModel)
+        fd.append('formModel', JSON.stringify(this.userForm.value))
         
-        console.log(fd);
         this._userService.addNewUser(fd).subscribe((result => {
             this.router.navigate(['/users/users']);
 

@@ -28,11 +28,11 @@ export class FocusGroupeService {
 
 
 
-    addFocusGroupe(focusGroupe) {
-        console.log(focusGroupe);
+    addFocusGroupe(fd) {
+        console.log(fd);
         const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
-        return this.http.post(this.uri + 'focusgroupe/addfocusgroupe', JSON.stringify({focusGroupe}), {headers: headers}).map(res => res.json()).catch(this.handelError);
+        return this.http.post(this.uri + 'focusgroupe/addfocusgroupe', fd, {headers: headers}).map(res => res.json()).catch(this.handelError);
 
     }
 

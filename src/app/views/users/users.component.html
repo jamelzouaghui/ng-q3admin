@@ -17,26 +17,31 @@
                                 <thead>
                                     <tr>
                                         <th>Nom d'utilisateurr</th>
+                                         <th>Photo de profil</th>
                                         <th>Nom </th>
                                         <th>Prénom</th>
                                         <th>Créé le</th>
-                                        <th>Photo de profil</th>
                                        <th>Adresse email</th>
-                                        <th>Status</th>
+                                        <th>Activé</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr  *ngFor="let user of users.result; let i = index">
                                         <td>{{user.username}}</td>
-                                         <td>{{user.firtname}}</td>
+                                         <td><img src="{{url}}{{user.photo.name}}"class="rounded-circle" alt="Cinque Terre" width="100" height="100" > </td>
+                                         <td>{{user.firstname}}</td>
                                          <td>{{user.lastname}}</td>
-                                        <td>2012/01/01</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.email}}</td>
+                                        <td>{{user.created_at  | date : 'dd/MM/yyyy H:mm'}}</td>
+                                         <td>{{user.email}}</td>
                                         <td>
-                                            <span class="badge badge-success">Active</span>
+                                            <div *ngIf="user.enabled"> <span class="badge badge-success">oui</span></div>
+                                            <div *ngIf="!user.enabled"> <span class="badge badge-danger">non</span></div>
+                                           
+                                        </td>
+                                        <td>
+                                            <a href="#"  class="btn btn-social-icon btn-dropbox" ><i class="fa fa-edit"></i></a>
+                                            <a href="#" class="btn btn-social-icon btn-danger"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
                               

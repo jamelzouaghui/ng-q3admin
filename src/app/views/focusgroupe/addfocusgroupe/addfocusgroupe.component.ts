@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild,ElementRef} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {FocusGroupeService} from './../../../service/focus-groupe.service';
@@ -22,6 +22,11 @@ export class AddfocusgroupeComponent implements OnInit {
     createdAt: Date;
     bsValue: Date = new Date();
     @ViewChild('f') form: any;
+    filesToUploadCouverture: File = null;
+    filesToUploadGroupe: File = null;
+    filesToUploadAnimateur: File = null;
+    @ViewChild('fileInput') fileInput: ElementRef;
+
     errors = [];
 
     //    profileForm = new FormGroup({});
@@ -30,6 +35,8 @@ export class AddfocusgroupeComponent implements OnInit {
         raison: new FormControl(''),
         description1: new FormControl(''),
         description2: new FormControl(''),
+        photoGroupe: new FormControl(''),
+        photoAnimateur: new FormControl(''),
         animateur: new FormGroup({
             firstname: new FormControl(''),
             lastname: new FormControl(''),
@@ -49,17 +56,37 @@ export class AddfocusgroupeComponent implements OnInit {
 
     ngOnInit() {
     }
+
+    onSelectFileCouverture(files: FileList) {
+        this.filesToUploadCouverture = <File>files.item(0);
+    }
+    onSelectFileGroupe(files: FileList) {
+        this.filesToUploadGroupe = <File>files.item(0);
+    }
+    onSelectFileAnimateur(files: FileList) {
+        this.filesToUploadAnimateur = <File>files.item(0);
+    }
+
+
+
     onSubmit() {
-        // TODO: Use EventEmitter with form value
-        console.log(this.profileForm.value);
-        this._focusgroupeService.addFocusGroupe(this.profileForm.value).subscribe((data=>{
-            
+
+         const fd = new FormData();
+        fd.append('imageCouverture',this.filesToUploadCouverture,this.filesToUploadCouverture.name)
+        fd.append('imageGroupe',this.filesToUploadGroupe,this.filesToUploadGroupe.name)
+        fd.append('imageAnimateur',this.filesToUploadAnimateur,this.filesToUploadAnimateur.name)
+         fd.append('formModel', JSON.stringify(this.profileForm.value))
+
+
+
+        this._focusgroupeService.addFocusGroupe(fd).subscribe((data => {
+
             this.router.navigate(['/panel/panel']);
         }), addError => this.errors = addError)
     }
-    
-    
-    
- 
+
+
+
+
 
 }

@@ -14,6 +14,7 @@ import {Subject} from 'rxjs/Subject';
 export class UsersComponent implements OnInit {
 currentIndex;
 user;
+url = 'http://127.0.0.1:8000/uploads/users/';
  users: Array<Contact>= [] ;
      errorMessage: string;
   constructor(private _userService: UserService,private router: Router) { }
@@ -27,6 +28,8 @@ user;
     this._userService.getUsers().subscribe(
       users => {
       this.users = users;
+      
+      console.log(this.users)
           console.log(this.users);
        //this.dtTrigger.next();
        }, 

@@ -53,7 +53,7 @@ export class UserService {
 
     }
     addNewUser(fd) {
-        console.log(fd);
+        
         const headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.token);
         return this.http.post(this.uri + 'users/addnew', fd, {
