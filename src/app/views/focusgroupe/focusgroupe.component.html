@@ -5,7 +5,7 @@
     </div>
     <div class="card-body">
         <div class="animated fadeIn">
-           
+
             <!--/.row-->
             <div class="row">
                 <div class="col-lg-12">
@@ -22,7 +22,7 @@
                                         <th>Animateur</th>
                                         <th>Envoi Invitattion</th>
                                         <th>Envoi relance</th>
-                                       <th>Envoi Feedback</th>
+                                        <th>Envoi Feedback</th>
                                         <th>Envoi Remerciment</th>
                                         <th>1er Post</th>
                                         <th>Dernier Post</th>
@@ -34,28 +34,50 @@
                                 </thead>
                                 <tbody>
                                     <tr  *ngFor="let groupe of focusgroupes.result; let i = index" >
-                                        <td>{{groupe.created_at |  date:'dd/MM/yyyy'}}</td>
-                                         <td>{{groupe.nom}}</td>
-                                         <td>{{groupe.animateur.firstname}} <p>{{groupe.animateur.lastname}}</p></td>
+                                        <td>{{groupe.created_at |  date:'dd/MM/yyyy H:m'}}</td>
+                                        <td>{{groupe.nom}}</td>
+                                        <td>{{groupe.animateur.firstname}} <p>{{groupe.animateur.lastname}}</p></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                         <td></td>
-                                          <td></td>
-                                           <td></td>
-                                            
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+
                                         <td>
-                                            <span class="badge badge-success">Active</span>
+                                            <div *ngIf="!groupe.activer_tchate"> <span class="badge badge-danger">désactivé</span></div>
+                                            <div *ngIf="groupe.activer_tchate"> <span class="badge badge-success">activé</span></div>
+
                                         </td>
                                         <td>
-                                             <span class="badge badge-success">Active</span>
+
+                                            <div *ngIf="groupe.statut == 0 ">
+                                                <span class="label" style="background-color:#54b89b;">Activé</span>
+                                            </div>
+                                            <div *ngIf="groupe.statut == 1 ">
+                                                <span class="badge badge-success">En cours</span>
+                                            </div>
+
+                                            <div *ngIf="groupe.statut == 2 ">
+                                                <span class="badge badge-primary">Clôturé</span>
+                                            </div>
+                                            <div *ngIf="groupe.statut == 4 ">
+                                                <span class="badge badge-warning">Archivé</span>
+                                            </div>
+                                            <div *ngIf="groupe.statut == 5 ">
+                                                <span class="badge badge-info">Brouillon</span>
+                                            </div>
+
+
+
                                         </td>
                                         <td>
-                                             
+                                            <a href="#"  class="btn btn-social-icon btn-dropbox" ><i class="fa fa-edit"></i></a>
+                                            <a href="#" class="btn btn-social-icon btn-danger"><i class="fa fa-times"></i></a>
                                         </td>
                                     </tr>
-                              
+
                                 </tbody>
                             </table>
                             <nav>
@@ -77,6 +99,6 @@
             </div>
             <!--/.row-->
         </div>
-       
+
     </div>
 </div>
