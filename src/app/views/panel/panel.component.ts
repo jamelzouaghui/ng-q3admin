@@ -24,6 +24,7 @@ export class PanelComponent implements OnInit {
     public prenom: string;
     public dataSelect = [];
     public segments = [];
+    public marque = [];
 
     currentIndex;
     contact;
@@ -35,7 +36,7 @@ export class PanelComponent implements OnInit {
     constructor(private _contactService: ContactService, private router: Router) {}
 
     ngOnInit() {
-        //this.getPanelsList();
+        ;
         this.getContacts();
     }
 
@@ -44,6 +45,16 @@ export class PanelComponent implements OnInit {
             data => {
 
                 this.data = data;
+                console.log(data);
+                data.forEach((key: any, val: any) => {
+                    //key['index'] = val + 1;
+                    console.log(val);
+                    this.marque[key]= val;
+
+                   
+                })
+
+                console.log(this.marque);
 
 
             },
@@ -52,14 +63,14 @@ export class PanelComponent implements OnInit {
 
     }
 
-   
-    
+
+
     NewSegment() {
-     
-      this.segments = this.dataSelect;
-    
+
+        this.segments = this.dataSelect;
+
     }
-    AddSegment(segment){
+    AddSegment(segment) {
         console.log('new segment');
         console.log(segment);
     }

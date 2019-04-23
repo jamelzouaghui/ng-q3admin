@@ -42,11 +42,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <ng-select
-                                        [items]="data "
+                                        [items]="marque "
                                         [multiple]="true"
                                         [closeOnSelect]="false"
                                         [searchable]="true"
-                                        bindLabel="marque"
+                                        bindLabel="val"
                                         placeholder="Select people"
                                         [(ngModel)]="selectedPeople3">
                                     </ng-select>
@@ -81,7 +81,7 @@
                                 <ul>
                                     <li *ngFor="let item of selectedPeople1">{{item.nom}}</li>
                                     <li *ngFor="let item of selectedPeople2">{{item.prenom}}</li>
-                                    <li *ngFor="let item of selectedPeople3">{{item.marque}}</li>
+                                    <li *ngFor="let item of selectedPeople3">{{item.val}}</li>
                                     <li *ngFor="let item of selectedPeople4">{{item.application}}</li>
                                 </ul>
 
