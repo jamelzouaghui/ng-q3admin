@@ -24,7 +24,7 @@ export class PanelComponent implements OnInit {
     public prenom: string;
     public dataSelect = [];
     public segments = [];
-    public marque = [];
+    public marques = [];
 
     currentIndex;
     contact;
@@ -43,18 +43,8 @@ export class PanelComponent implements OnInit {
     getContacts() {
         this._contactService.getContacts().subscribe(
             data => {
-
                 this.data = data;
-                console.log(data);
-                data.forEach((key: any, val: any) => {
-                    //key['index'] = val + 1;
-                    console.log(val);
-                    this.marque[key]= val;
-
-                   
-                })
-
-                console.log(this.marque);
+            
 
 
             },

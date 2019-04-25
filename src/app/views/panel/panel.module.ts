@@ -7,6 +7,7 @@ import {DataTableModule} from "angular-6-datatable";
 import { HttpClientModule }    from '@angular/common/http';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FilterPipe }from './../../pipe/filter.pipe';
 
 
 import { PanelRoutingModule } from './panel-routing.module';
@@ -25,6 +26,6 @@ import {PanelComponent} from './../panel/panel.component';
     NgSelectModule,
     HttpClientModule
   ],
-  declarations: [PanelComponent]
+  declarations: [PanelComponent,FilterPipe]
 })
 export class PanelModule { }

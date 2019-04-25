@@ -13,16 +13,17 @@
                             <i class="fa fa-align-justify"></i> liste des panel 
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
+                            <div class="row" style="min-height:275px;" >
+                                <div class="col-md-4" style="min-height:275px;">
                                     <ng-select
                                         [items]="data "
                                         [multiple]="true"
                                         [closeOnSelect]="false"
                                         [searchable]="true"
                                         bindLabel="nom"
-                                        placeholder="Select people"
-                                        [(ngModel)]="selectedPeople1">
+                                        placeholder="Select Nom"
+                                        [(ngModel)]="selectedPeople1"
+                                        [isOpen] = "true">
                                     </ng-select>
 
 
@@ -34,21 +35,26 @@
                                         [closeOnSelect]="false"
                                         [searchable]="true"
                                         bindLabel="prenom"
-                                        placeholder="Select people"
-                                        [(ngModel)]="selectedPeople2">
+                                        placeholder="Select Prenom"
+                                        [(ngModel)]="selectedPeople2"
+                                        [isOpen] = "true">
                                     </ng-select>
 
 
                                 </div>
                                 <div class="col-md-4">
                                     <ng-select
-                                        [items]="marque "
+                                        [items]="data  "
                                         [multiple]="true"
                                         [closeOnSelect]="false"
                                         [searchable]="true"
-                                        bindLabel="val"
-                                        placeholder="Select people"
-                                        [(ngModel)]="selectedPeople3">
+                                        bindLabel="marque"
+                                        
+                                        bindValue="marque"
+                                        placeholder="Select Marque"
+                                        [(ngModel)]="selectedPeople3"
+                                        [isOpen] = "true">
+                                        >
                                     </ng-select>
 
 
@@ -67,8 +73,9 @@
                                         [closeOnSelect]="false"
                                         [searchable]="true"
                                         bindLabel="application"
-                                        placeholder="Select people"
-                                        [(ngModel)]="selectedPeople4">
+                                        placeholder="Select Application"
+                                        [(ngModel)]="selectedPeople4"
+                                        [isOpen] = "true">
                                     </ng-select>
 
 

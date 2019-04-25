@@ -30,6 +30,9 @@ import {P500Component} from './views/error/500.component';
 import {LoginComponent} from './views/login/login.component';
 import {RegisterComponent} from './views/register/register.component';
 
+
+
+
 const APP_CONTAINERS = [
     DefaultLayoutComponent
 ];
@@ -81,7 +84,8 @@ import {UsersModule} from './views/users/users.module';
         ChartsModule,
         ModalModule,
         UsersModule,
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
+        
     ],
     declarations: [
         AppComponent,
@@ -90,6 +94,7 @@ import {UsersModule} from './views/users/users.module';
         P500Component,
         LoginComponent,
         RegisterComponent,
+        
 //        PanelComponent
     ],
     providers: [
