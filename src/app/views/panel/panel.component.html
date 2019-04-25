@@ -43,14 +43,16 @@
 
                                 </div>
                                 <div class="col-md-4">
+                                    <div  *ngFor="let marq of marques">
+                                        <li>{{marq.name}}</li>
+                                
+                                </div>
                                     <ng-select
-                                        [items]="data  "
+                                        [items]="marques "
                                         [multiple]="true"
                                         [closeOnSelect]="false"
                                         [searchable]="true"
-                                        bindLabel="marque"
                                         
-                                        bindValue="marque"
                                         placeholder="Select Marque"
                                         [(ngModel)]="selectedPeople3"
                                         [isOpen] = "true">
